@@ -1,0 +1,25 @@
+# GAT relationship parser configuration
+base: ../base.yaml
+
+model:
+  type: gat
+  node_feat_dim: 34
+  edge_feat_dim: 5
+  hidden_dim: 128
+  num_heads: 4
+  num_layers: 3
+  dropout: 0.2
+
+graph:
+  k_neighbors: 8
+  max_distance_px: 200
+
+training:
+  epochs: 200
+  lr: 0.001
+  weight_decay: 0.0001
+  scheduler: cosine_warm_restarts
+  batch_size: 32  # Safe for 8GB VRAM (RTX 3070 Ti)
+  patience: 30
+
+edge_threshold: 0.5

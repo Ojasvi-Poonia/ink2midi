@@ -1,0 +1,25 @@
+# End-to-end inference pipeline configuration
+base: ../base.yaml
+
+detection:
+  weights: checkpoints/detection/yolov8s_muscima_finetune/weights/best.pt
+  model_size: yolov8s
+  confidence: 0.3
+  iou_threshold: 0.45
+  imgsz: 640
+
+gnn:
+  weights: checkpoints/gnn/gat_best.pt
+  k_neighbors: 8
+  max_distance: 200
+  edge_threshold: 0.5
+
+sequencer:
+  default_tempo: 120
+  default_velocity: 80
+  onset_tolerance_ms: 50
+  offset_tolerance_ratio: 0.2
+
+output:
+  midi_dir: outputs/midi
+  visualization_dir: outputs/viz

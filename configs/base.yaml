@@ -1,0 +1,44 @@
+# Base configuration shared across all modules
+# Auto-resolved: set OMR_PROJECT_ROOT env var, or defaults to current working dir
+project_root: ${oc.env:OMR_PROJECT_ROOT,.}
+
+data:
+  raw_dir: ${project_root}/data/raw
+  processed_dir: ${project_root}/data/processed
+  splits_dir: ${project_root}/data/splits
+
+checkpoints_dir: ${project_root}/checkpoints
+
+device: cuda  # cuda | mps | cpu
+seed: 42
+
+# 26 target symbol classes
+classes:
+  - notehead_filled
+  - notehead_half
+  - notehead_whole
+  - stem
+  - beam
+  - flag_eighth_up
+  - flag_eighth_down
+  - flag_sixteenth_up
+  - flag_sixteenth_down
+  - rest_whole
+  - rest_half
+  - rest_quarter
+  - rest_eighth
+  - rest_sixteenth
+  - sharp
+  - flat
+  - natural
+  - double_sharp
+  - treble_clef
+  - bass_clef
+  - alto_clef
+  - time_sig_digit
+  - bar_line
+  - double_bar_line
+  - dot
+  - tie_slur
+
+num_classes: 26

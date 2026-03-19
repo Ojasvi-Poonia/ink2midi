@@ -1,0 +1,50 @@
+# PyTorch with CUDA 12.2 support (RTX 3070 Ti)
+# Install PyTorch first:
+#   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+#
+# Then install the rest:
+#   pip install -r requirements.txt
+
+# Object Detection
+ultralytics>=8.3.0
+
+# Graph Neural Networks (install after PyTorch)
+# pip install torch-geometric -f https://data.pyg.org/whl/torch-2.5.0+cu121.html
+torch-geometric>=2.6.0
+
+# Music / MIDI
+music21>=9.0.0
+mido>=1.3.0
+pretty_midi>=0.2.10
+
+# OMR Data
+muscima>=0.10.0
+omrdatasettools>=1.0.0
+
+# Configuration
+omegaconf>=2.3.0
+pyyaml>=6.0
+
+# Image Processing
+opencv-python-headless>=4.9.0
+Pillow>=10.0.0
+scikit-image>=0.22.0
+
+# Data / Metrics
+numpy>=1.26.0
+pandas>=2.2.0
+scipy>=1.12.0
+scikit-learn>=1.4.0
+
+# Visualization
+matplotlib>=3.8.0
+seaborn>=0.13.0
+
+# Experiment Tracking
+wandb>=0.16.0
+tensorboard>=2.16.0
+
+# Misc
+tqdm>=4.66.0
+rich>=13.7.0
+requests>=2.31.0
