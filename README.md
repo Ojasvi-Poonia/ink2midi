@@ -136,8 +136,8 @@ Trained and evaluated on an **NVIDIA RTX 3070 Ti** (8 GB VRAM, CUDA 12.2).
 ### Installation
 
 ```bash
-git clone https://github.com/yourusername/omr-handwritten.git
-cd omr-handwritten
+git clone https://github.com/Ojasvi-Poonia/ink2midi.git
+cd ink2midi
 
 python3 -m venv .venv
 source .venv/bin/activate

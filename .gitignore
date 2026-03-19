@@ -39,4 +39,8 @@ runs/
 *.log
 *.tmp
 .claude/
-.claude/
+
+# Model weights
+*.pt
+*.pth
+*.onnx
