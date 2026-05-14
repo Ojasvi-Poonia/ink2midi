@@ -121,16 +121,24 @@ skip_or_run "[2/7] Downloading datasets" \
   '
 
 # ---------- 3. Data preparation ----------
-skip_or_run "[3/7] Preparing data (splits + YOLO format)" \
+# NOTE: --dataset muscima skips DeepScores V2 parsing, which can OOM/segfault
+# on machines with <32 GB RAM (its annotations JSON is multi-GB).
+# To enable DeepScores too: change to `--dataset all` and ensure plenty of RAM.
+skip_or_run "[3/7] Preparing data (MUSCIMA++ splits + YOLO format)" \
   "data/processed/muscima_yolo/images/test" \
-  python scripts/prepare_data.py
+  python scripts/prepare_data.py --dataset muscima
 
-# ---------- 4. Detector training (Phase 1 + Phase 2) ----------
+# ---------- 4. Detector training ----------
+# NOTE: defaulting to --phase finetune (MUSCIMA++ only) because DeepScores
+# pretrain (Phase 1) is the slow + memory-hungry step and is OPTIONAL.
+# Final mAP is ~3-5 points lower without it but still strong + publishable.
+# To run Phase 1 + Phase 2: change `--phase finetune` to `--phase both`
+# (and ensure DeepScores was successfully prepared in step 3).
 DET_BEST="checkpoints/detection/yolov8s_muscima_finetune/weights/best.pt"
-skip_or_run "[4/7] Training YOLOv8 detector (both phases)" \
+skip_or_run "[4/7] Training YOLOv8 detector (MUSCIMA++ finetune from COCO)" \
   "$DET_BEST" \
   python scripts/train_detector.py \
-    --phase both --device "$DEVICE" --batch 8 --fast
+    --phase finetune --device "$DEVICE" --batch 8 --fast
 
 # ---------- 5. GAT training ----------
 GAT_BEST="checkpoints/gnn/gat_best.pt"
